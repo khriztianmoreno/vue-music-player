@@ -5,11 +5,13 @@
         <player-title-bar />
         <player-controls-bars
           :loop="loop"
+          :shuffle="shuffle"
           @playtrack="play"
           @pausetrack="pause"
           @stoptrack="stop"
           @skiptrack="skip"
           @toggleloop="toggleLoop"
+          @toggleshuffle="toggleShuffle"
         />
         <player-playlist-panel
           :playlist="playlist"
@@ -45,7 +47,8 @@
         selectedTrack: null,
         index: 0,
         playing: false,
-        loop: false
+        loop: false,
+        shuffle: false
       }
     },
     created: function () {
@@ -108,8 +111,14 @@
       },
       skip (direction) {
         let index = 0
+        const lastIndex = this.playlist.length - 1
 
-        if (direction === "next") {
+        if (this.shuffle) {
+          index = Math.round(Math.random() * lastIndex)
+          while (index === this.index) {
+            index = Math.round(Math.random() * lastIndex)
+          }
+        } else if (direction === "next") {
           index = this.index + 1
           if (index >= this.playlist.length) {
             index = 0
@@ -132,6 +141,9 @@
       },
       toggleLoop (value) {
         this.loop = value
+      },
+      toggleShuffle (value) {
+        this.shuffle = value
       }
     }
   }

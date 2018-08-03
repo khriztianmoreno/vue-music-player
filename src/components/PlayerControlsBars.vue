@@ -32,6 +32,10 @@
         <v-icon color="light-blue" v-if="this.loop">repeat_one</v-icon>
         <v-icon color="blue-grey" v-else>repeat_one</v-icon>
       </v-btn>
+      <v-btn flat icon @click="toggleShuffle">
+        <v-icon color="light-blue" v-if="this.shuffle">shuffle</v-icon>
+        <v-icon color="blue-grey" v-else>shuffle</v-icon>
+      </v-btn>
     </v-toolbar>
   </div>
 </template>
@@ -39,7 +43,8 @@
 <script>
   export default {
     props: {
-      loop: Boolean
+      loop: Boolean,
+      shuffle: Boolean
     },
     data () {
       return {
@@ -72,7 +77,10 @@
       },
       toggleLoop () {
         this.$emit('toggleloop', !this.loop)
-      }
+      },
+      toggleShuffle () {
+        this.$emit('toggleshuffle', !this.shuffle)
+      },
     }
   }
 </script>

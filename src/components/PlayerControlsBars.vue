@@ -28,12 +28,19 @@
         <v-icon>skip_next</v-icon>
       </v-btn>
       <v-spacer></v-spacer>
+      <v-btn flat icon @click="toggleLoop">
+        <v-icon color="light-blue" v-if="this.loop">repeat_one</v-icon>
+        <v-icon color="blue-grey" v-else>repeat_one</v-icon>
+      </v-btn>
     </v-toolbar>
   </div>
 </template>
 
 <script>
   export default {
+    props: {
+      loop: Boolean
+    },
     data () {
       return {
         volume: 0.5,
@@ -62,6 +69,9 @@
       toggleMute () {
         Howler.mute(!this.muted)
         this.muted = !this.muted
+      },
+      toggleLoop () {
+        this.$emit('toggleloop', !this.loop)
       }
     }
   }

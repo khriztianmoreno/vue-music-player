@@ -4,10 +4,12 @@
       <v-container>
         <player-title-bar />
         <player-controls-bars
+          :loop="loop"
           @playtrack="play"
           @pausetrack="pause"
           @stoptrack="stop"
           @skiptrack="skip"
+          @toggleloop="toggleLoop"
         />
         <player-playlist-panel
           :playlist="playlist"
@@ -42,14 +44,22 @@
         ],
         selectedTrack: null,
         index: 0,
-        playing: false
+        playing: false,
+        loop: false
       }
     },
     created: function () {
       this.playlist.forEach( (track) => {
         let file = track.title.replace(/\s/g, "_")
         track.howl = new Howl({
-          src: [`./playlist/${file}.mp3`]
+          src: [`./playlist/${file}.mp3`],
+          onend: () => {
+            if (this.loop) {
+              this.play(this.index)
+            } else {
+              this.skip('next')
+            }
+          }
         })
       })
     },
@@ -119,6 +129,9 @@
         }
 
         this.play(index)
+      },
+      toggleLoop (value) {
+        this.loop = value
       }
     }
   }

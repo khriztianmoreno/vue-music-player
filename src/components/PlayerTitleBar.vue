@@ -10,7 +10,7 @@
         </v-list-tile>
         <v-dialog v-model="dialog" max-width="300">
           <v-card>
-            <v-card-title><h2>Vue Music Player</h2></v-card-title>
+            <v-card-title><h2>Vue Music Player || @khriztianmoreno</h2></v-card-title>
             <v-card-text>Version 1.0.0</v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
@@ -21,14 +21,14 @@
       </v-list>
     </v-menu>
     <v-spacer></v-spacer>
-    VUE MUSIC PLAYER
+    VUE MUSIC PLAYER || @Khriztianmoreno
     <v-spacer></v-spacer>
     <v-icon>remove</v-icon>
     <v-icon>check_box_outline_blank</v-icon>
     <v-icon>close</v-icon>
   </v-system-bar>
 </template>
- 
+
 <script>
   export default {
     data () {

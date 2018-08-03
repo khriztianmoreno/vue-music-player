@@ -1,0 +1,39 @@
+<template>
+  <v-app dark>
+    <v-content>
+      <v-container>
+        <player-title-bar />// ADD the component in the template
+      </v-container>
+    </v-content>
+  </v-app>
+</template>
+ 
+<script>
+  import PlayerTitleBar from './components/PlayerTitleBar.vue' // IMPORT the component
+ 
+  export default {
+    components: {
+      PlayerTitleBar // REGISTER the component
+    },
+    data () {
+      return {
+        playlist: [
+          {title: "Streets of Sant'Ivo", artist: "Ask Again", howl: null, display: true},
+          {title: "Remember the Way", artist: "Ask Again", howl: null, display: true},
+          {title: "Guardians", artist: "Ask Again", howl: null, display: true},
+          {title: "Crusade of The Castellan", artist: "Ask Again", howl: null, display: true},
+          {title: "Land of a Folk Divided", artist: "Ask Again", howl: null, display: true},
+          {title: "An Innocent Sword", artist: "Ask Again", howl: null, display: true}
+        ]
+      }
+    },
+    created: function () {
+      this.playlist.forEach( (track) => {
+        let file = track.title.replace(/\s/g, "_")
+        track.howl = new Howl({
+          src: [`./playlist/${file}.mp3`]
+        })
+      })
+    }
+  }
+</script>

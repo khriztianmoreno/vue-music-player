@@ -37,6 +37,9 @@
         <v-icon color="blue-grey" v-else>shuffle</v-icon>
       </v-btn>
     </v-toolbar>
+    <v-toolbar flat height="40">
+      <v-progress-linear height="40" v-model="trackProgress"  @click="updateSeek($event)"></v-progress-linear>
+    </v-toolbar>
   </div>
 </template>
 
@@ -44,13 +47,19 @@
   export default {
     props: {
       loop: Boolean,
-      shuffle: Boolean
+      shuffle: Boolean,
+      progress: Number
     },
     data () {
       return {
         volume: 0.5,
         muted: false
       }
+    },
+    computed: {
+      trackProgress () {
+        return this.progress * 100
+      },
     },
     created: function () {
       Howler.volume(this.volume)
@@ -81,6 +90,14 @@
       toggleShuffle () {
         this.$emit('toggleshuffle', !this.shuffle)
       },
+      updateSeek (event) {
+        const el = document.querySelector(".progress-linear__bar")
+        const mousePos = event.offsetX
+        const elWidth = el.clientWidth
+        const percents = (mousePos / elWidth) * 100
+
+        this.$emit('updateseek', percents)
+      }
     }
   }
 </script>

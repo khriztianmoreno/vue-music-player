@@ -6,12 +6,14 @@
         <player-controls-bars
           :loop="loop"
           :shuffle="shuffle"
+          :progress="progress"
           @playtrack="play"
           @pausetrack="pause"
           @stoptrack="stop"
           @skiptrack="skip"
           @toggleloop="toggleLoop"
           @toggleshuffle="toggleShuffle"
+          @updateseek="setSeek"
         />
         <player-playlist-panel
           :playlist="playlist"
@@ -48,7 +50,8 @@
         index: 0,
         playing: false,
         loop: false,
-        shuffle: false
+        shuffle: false,
+        seek: 0
       }
     },
     created: function () {
@@ -69,6 +72,10 @@
     computed: {
       currentTrack () {
         return this.playlist[this.index]
+      },
+      progress () {
+        if (this.currentTrack.howl.duration() === 0) return 0
+        return this.seek / this.currentTrack.howl.duration()
       }
     },
     methods: {
@@ -144,6 +151,25 @@
       },
       toggleShuffle (value) {
         this.shuffle = value
+      },
+      setSeek (percents) {
+        const track = this.currentTrack.howl
+        if (track.playing()) {
+          track.seek((track.duration() / 100) * percents)
+        }
+      }
+    },
+    watch: {
+      playing(playing) {
+        this.seek = this.currentTrack.howl.seek()
+        let updateSeek
+        if (playing) {
+          updateSeek = setInterval(() => {
+            this.seek = this.currentTrack.howl.seek()
+          }, 250)
+        } else {
+          clearInterval(updateSeek)
+        }
       }
     }
   }

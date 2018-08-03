@@ -21,6 +21,7 @@
           :selectedTrack="selectedTrack"
           @selecttrack="selectTrack"
         />
+        <player-search-bar :playlist="playlist" />
       </v-container>
     </v-content>
   </v-app>
@@ -31,13 +32,15 @@
   import PlayerPlaylistPanel from './components/PlayerPlaylistPanel.vue'
   import PlayerControlsBars from './components/PlayerControlsBars.vue'
   import PlayerInfoPanel from './components/PlayerInfoPanel.vue'
+  import PlayerSearchBar from './components/PlayerSearchBar.vue'
 
   export default {
     components: {
       PlayerTitleBar,
       PlayerPlaylistPanel,
       PlayerControlsBars,
-      PlayerInfoPanel
+      PlayerInfoPanel,
+      PlayerSearchBar
     },
     data () {
       return {

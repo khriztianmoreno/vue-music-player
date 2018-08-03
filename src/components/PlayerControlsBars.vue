@@ -91,7 +91,7 @@
         this.$emit('toggleshuffle', !this.shuffle)
       },
       updateSeek (event) {
-        const el = document.querySelector(".progress-linear__bar")
+        const el = document.querySelector(".v-progress-linear__bar")
         const mousePos = event.offsetX
         const elWidth = el.clientWidth
         const percents = (mousePos / elWidth) * 100

@@ -3,15 +3,16 @@
     <v-content>
       <v-container>
         <player-title-bar />
-        <player-playlist-panel
-          :playlist="playlist"
-          :selectedTrack="selectedTrack"
-          @selecttrack="selectTrack"
-        />
         <player-controls-bars
           @playtrack="play"
           @pausetrack="pause"
           @stoptrack="stop"
+          @skiptrack="skip"
+        />
+        <player-playlist-panel
+          :playlist="playlist"
+          :selectedTrack="selectedTrack"
+          @selecttrack="selectTrack"
         />
       </v-container>
     </v-content>
@@ -94,6 +95,30 @@
       stop () {
         this.currentTrack.howl.stop()
         this.playing = false
+      },
+      skip (direction) {
+        let index = 0
+
+        if (direction === "next") {
+          index = this.index + 1
+          if (index >= this.playlist.length) {
+            index = 0
+          }
+        } else {
+          index = this.index - 1
+          if (index < 0) {
+            index = this.playlist.length - 1
+          }
+        }
+
+        this.skipTo(index)
+      },
+      skipTo (index) {
+        if (this.currentTrack) {
+          this.currentTrack.howl.stop()
+        }
+
+        this.play(index)
       }
     }
   }

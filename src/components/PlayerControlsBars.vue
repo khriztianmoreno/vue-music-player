@@ -2,6 +2,9 @@
   <div>
     <v-toolbar flat height=90>
       <v-spacer></v-spacer>
+      <v-btn outline fab small color="light-blue" @click="skipTrack('prev')">
+        <v-icon>skip_previous</v-icon>
+      </v-btn>
       <v-btn outline fab small color="light-blue" @click="stopTrack">
         <v-icon>stop</v-icon>
       </v-btn>
@@ -10,6 +13,9 @@
       </v-btn>
       <v-btn outline fab small color="light-blue" @click="pauseTrack">
         <v-icon>pause</v-icon>
+      </v-btn>
+      <v-btn outline fab small color="light-blue" @click="skipTrack('next')">
+        <v-icon>skip_next</v-icon>
       </v-btn>
       <v-spacer></v-spacer>
     </v-toolbar>
@@ -27,6 +33,9 @@
       },
       stopTrack() {
         this.$emit('stoptrack')
+      },
+      skipTrack (direction) {
+        this.$emit('skiptrack', direction)
       }
     }
   }

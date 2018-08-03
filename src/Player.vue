@@ -3,6 +3,7 @@
     <v-content>
       <v-container>
         <player-title-bar />
+        <player-info-panel :trackInfo="getTrackInfo"/>
         <player-controls-bars
           :loop="loop"
           :shuffle="shuffle"
@@ -29,12 +30,14 @@
   import PlayerTitleBar from './components/PlayerTitleBar.vue'
   import PlayerPlaylistPanel from './components/PlayerPlaylistPanel.vue'
   import PlayerControlsBars from './components/PlayerControlsBars.vue'
+  import PlayerInfoPanel from './components/PlayerInfoPanel.vue'
 
   export default {
     components: {
       PlayerTitleBar,
       PlayerPlaylistPanel,
-      PlayerControlsBars
+      PlayerControlsBars,
+      PlayerInfoPanel
     },
     data () {
       return {
@@ -76,6 +79,19 @@
       progress () {
         if (this.currentTrack.howl.duration() === 0) return 0
         return this.seek / this.currentTrack.howl.duration()
+      },
+      getTrackInfo () {
+        const artist = this.currentTrack.artist
+        const title = this.currentTrack.title
+        const seek = this.seek
+        const duration = this.currentTrack.howl.duration()
+
+        return {
+          artist,
+          title,
+          seek,
+          duration,
+        }
       }
     },
     methods: {

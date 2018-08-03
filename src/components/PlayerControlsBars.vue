@@ -1,6 +1,14 @@
 <template>
   <div>
     <v-toolbar flat height=90>
+      <v-btn flat icon @click="toggleMute">
+        <template v-if="!this.muted">
+          <v-icon v-if="this.volume >= 0.5">volume_up</v-icon>
+          <v-icon v-else-if="this.volume > 0">volume_down</v-icon>
+          <v-icon v-else>volume_mute</v-icon>
+        </template>
+        <v-icon v-show="this.muted">volume_off</v-icon>
+      </v-btn>
       <v-slider v-model="volume" @input="updateVolume(volume)" max="1" step="0.1"></v-slider>
       {{this.volume * 100 + '%'}}
       <v-spacer></v-spacer>
@@ -28,7 +36,8 @@
   export default {
     data () {
       return {
-        volume: 0.5
+        volume: 0.5,
+        muted: false
       }
     },
     created: function () {
@@ -49,6 +58,10 @@
       },
       updateVolume (volume) {
         Howler.volume(volume)
+      },
+      toggleMute () {
+        Howler.mute(!this.muted)
+        this.muted = !this.muted
       }
     }
   }

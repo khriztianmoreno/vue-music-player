@@ -2,18 +2,21 @@
   <v-app dark>
     <v-content>
       <v-container>
-        <player-title-bar />// ADD the component in the template
+        <player-title-bar />
+        <player-playlist-panel :playlist="playlist" />
       </v-container>
     </v-content>
   </v-app>
 </template>
  
 <script>
-  import PlayerTitleBar from './components/PlayerTitleBar.vue' // IMPORT the component
+  import PlayerTitleBar from './components/PlayerTitleBar.vue'
+  import PlayerPlaylistPanel from './components/PlayerPlaylistPanel.vue'
  
   export default {
     components: {
-      PlayerTitleBar // REGISTER the component
+      PlayerTitleBar,
+      PlayerPlaylistPanel
     },
     data () {
       return {

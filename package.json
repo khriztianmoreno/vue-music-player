@@ -3,6 +3,7 @@
   "description": "A full-featured music player built with Vue.js",
   "version": "1.0.0",
   "author": "khriztianmoreno <khriztianmoreno@gmail.com>",
+  "homepage": "https://khriztianmoreno.github.io/vue-music-player/",
   "private": false,
   "scripts": {
     "start": "cross-env NODE_ENV=production webpack --progress --hide-modules",

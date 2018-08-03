@@ -3,16 +3,20 @@
     <v-content>
       <v-container>
         <player-title-bar />
-        <player-playlist-panel :playlist="playlist" />
+        <player-playlist-panel
+          :playlist="playlist"
+          :selectedTrack="selectedTrack"
+          @selecttrack="selectTrack"
+        />
       </v-container>
     </v-content>
   </v-app>
 </template>
- 
+
 <script>
   import PlayerTitleBar from './components/PlayerTitleBar.vue'
   import PlayerPlaylistPanel from './components/PlayerPlaylistPanel.vue'
- 
+
   export default {
     components: {
       PlayerTitleBar,
@@ -27,7 +31,8 @@
           {title: "Crusade of The Castellan", artist: "Ask Again", howl: null, display: true},
           {title: "Land of a Folk Divided", artist: "Ask Again", howl: null, display: true},
           {title: "An Innocent Sword", artist: "Ask Again", howl: null, display: true}
-        ]
+        ],
+        selectedTrack: null
       }
     },
     created: function () {
@@ -37,6 +42,11 @@
           src: [`./playlist/${file}.mp3`]
         })
       })
+    },
+    methods: {
+      selectTrack (track) {
+        this.selectedTrack = track
+      }
     }
   }
 </script>

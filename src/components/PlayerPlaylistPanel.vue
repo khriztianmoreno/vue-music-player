@@ -5,7 +5,7 @@
         v-for="(track, index) in playlist"
         :key="track.title"
         v-show="track.display">
-        <v-list-tile-content>
+        <v-list-tile-content @click="selectTrack(track)">
           <v-list-tile-title>{{ index | numbers }} {{ track.artist }} - {{ track.title }}</v-list-tile-title>
         </v-list-tile-content>
         <v-spacer></v-spacer>
@@ -18,7 +18,13 @@
 <script>
   export default {
     props: {
-      playlist: Array
+      playlist: Array,
+      selectedTrack: Object
+    },
+    methods: {
+      selectTrack (track) {
+        this.$emit('selecttrack', track)
+      }
     }
   }
 </script>

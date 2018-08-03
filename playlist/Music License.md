@@ -1,1 +1,0 @@
-Good Morrow ~ Modern Renaissance Music by [Ask Again](https://soundcloud.com/artofescapism/) is licensed under a [Attribution-ShareAlike License](http://creativecommons.org/licenses/by-sa/4.0/).

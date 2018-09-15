@@ -67,7 +67,7 @@
       this.playlist.forEach( (track) => {
         let file = track.title.replace(/\s/g, "_")
         track.howl = new Howl({
-          src: [`./playlist/${file}.mp3`],
+          src: [`./dist/playlist/${file}.mp3`],
           onend: () => {
             if (this.loop) {
               this.play(this.index)

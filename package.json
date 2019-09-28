@@ -20,7 +20,7 @@
     "babel-loader": "8.0.6",
     "babel-preset-env": "1.7.0",
     "babel-preset-stage-2": "6.24.1",
-    "cross-env": "5.2.1",
+    "cross-env": "6.0.0",
     "css-loader": "0.28.11",
     "file-loader": "1.1.11",
     "gh-pages": "1.2.0",

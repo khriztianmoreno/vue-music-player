@@ -11,27 +11,27 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
-    "howler": "^2.0.14",
-    "vue": "^2.5.3",
-    "vuetify": "^1.0.0"
+    "howler": "2.1.2",
+    "vue": "2.6.10",
+    "vuetify": "1.5.18"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-stage-2": "^6.24.1",
-    "cross-env": "^5.0.5",
-    "css-loader": "^0.28.7",
-    "file-loader": "^1.1.4",
-    "gh-pages": "^1.2.0",
-    "node-sass": "^4.5.3",
-    "sass-loader": "^6.0.6",
-    "style-loader": "^0.13.1",
-    "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.1",
-    "vue-loader": "^13.0.5",
-    "vue-template-compiler": "^2.5.3",
-    "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.9.1"
+    "babel-core": "6.26.3",
+    "babel-loader": "7.1.5",
+    "babel-preset-env": "1.7.0",
+    "babel-preset-stage-2": "6.24.1",
+    "cross-env": "5.2.1",
+    "css-loader": "0.28.11",
+    "file-loader": "1.1.11",
+    "gh-pages": "1.2.0",
+    "node-sass": "4.12.0",
+    "sass-loader": "6.0.7",
+    "style-loader": "0.13.1",
+    "stylus": "0.54.5",
+    "stylus-loader": "3.0.2",
+    "vue-loader": "13.7.3",
+    "vue-template-compiler": "2.6.10",
+    "webpack": "3.12.0",
+    "webpack-dev-server": "2.11.5"
   }
 }
